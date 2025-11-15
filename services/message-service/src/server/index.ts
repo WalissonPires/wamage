@@ -1,5 +1,5 @@
 import Fastify from "fastify";
-import { IMessage } from '@wamage/message-contracts-ts';
+import { SendMessageCommand } from '@wamage/message-service-contracts-ts/commands';
 
 export function startServer() {
 
@@ -9,10 +9,20 @@ export function startServer() {
 
   server.get('/', (req, res) => {
 
-    const message: IMessage = {
-      id: '1',
-      text: 'Hello, world!',
-      timestamp: new Date(),
+    const message: SendMessageCommand = {
+      meta: {
+        commandId: '1',
+        trackingId: '2',
+        createadAt: new Date()
+      },
+      user: {
+         accountId: '3',
+         userId: '4'
+      },
+      requestId: '10',
+      channel: 'whatsapp',
+      to: '553399002211',
+      message: 'Hello World'
     };
 
     return message;

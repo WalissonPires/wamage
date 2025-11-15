@@ -1,0 +1,26 @@
+{
+  "name": "@wamage/messaging-contracts-ts",
+  "version": "1.0.0",
+  "description": "Shared contracts for messages",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": {
+      "import": "./dist/*/index.js",
+      "types": "./dist/*/index.d.ts"
+    }
+  },
+  "keywords": [],
+  "author": "walissonprm@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

@@ -12,7 +12,7 @@
   "author": "walissonprm@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "@wamage/message-contracts-ts": "workspace:*",
+    "@wamage/message-service-contracts-ts": "workspace:*",
     "fastify": "^5.6.2"
   },
   "devDependencies": {
