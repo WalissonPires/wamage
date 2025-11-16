@@ -1,7 +1,7 @@
 {
-  "name": "@wamage/message-service-contracts-ts",
+  "name": "@wamage/messaging-contracts",
   "version": "1.0.0",
-  "description": "Shared contracts for the Messsage Service",
+  "description": "Shared contracts for messages",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -21,9 +21,6 @@
   "keywords": [],
   "author": "walissonprm@gmail.com",
   "license": "ISC",
-  "dependencies": {
-    "@wamage/messaging-contracts": "workspace:*"
-  },
   "devDependencies": {
     "rimraf": "6.1.0",
     "typescript": "^5.9.3"

@@ -1,5 +1,5 @@
-import type { ICommandMessage } from "@wamage/messaging-contracts-ts/commands";
-import type { IUserMessage } from "@wamage/messaging-contracts-ts/user";
+import type { ICommandMessage } from "@wamage/messaging-contracts/commands";
+import type { IUserMessage } from "@wamage/messaging-contracts/user";
 
 export interface SendMessageCommand extends ICommandMessage, IUserMessage {
   requestId: string;

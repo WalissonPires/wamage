@@ -11,7 +11,7 @@ export function startServer() {
 
     const message: SendMessageCommand = {
       meta: {
-        commandId: '1',
+        messageId: '1',
         trackingId: '2',
         createadAt: new Date()
       },

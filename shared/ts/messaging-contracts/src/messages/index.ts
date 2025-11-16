@@ -1,6 +1,6 @@
-export interface IEventMessage {
+export interface IMessage {
   meta: {
-    eventId: string;
+    messageId: string;
     trackingId: string;
     createadAt: Date;
   }
