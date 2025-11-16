@@ -1,5 +1,10 @@
 import { IMessage } from "../messages";
 
 export interface IMessagingService {
-  publishMessage(message: IMessage): Promise<void>;
+  publishMessage(args: PublishMessageArgs): Promise<void>;
+}
+
+export interface PublishMessageArgs {
+  queue: string;
+  message: IMessage;
 }

@@ -1,5 +1,6 @@
 import Fastify from "fastify";
-import { SendMessageCommand } from '@wamage/message-service-contracts-ts/commands';
+import { MessageBrokerQueues, MessageBrokerService } from "../message-broker";
+import { CommandsFactory } from "../commands";
 
 export function startServer() {
 
@@ -7,31 +8,30 @@ export function startServer() {
     logger: true
   });
 
-  server.get('/', (req, res) => {
+  server.get('/', async (req, res) => {
+    return { message: 'OK' };
+  });
 
-    const message: SendMessageCommand = {
-      meta: {
-        messageId: '1',
-        trackingId: '2',
-        createadAt: new Date()
-      },
-      user: {
-         accountId: '3',
-         userId: '4'
-      },
-      requestId: '10',
-      channel: 'whatsapp',
-      to: '553399002211',
-      message: 'Hello World'
-    };
+  server.post('/messages', async (req, res) => {
 
-    return message;
+    const { channel, to, message } = (req.body ?? {}) as any;
+
+    const sendMessageCommand = CommandsFactory.createSendMessageCommand({ channel, to, message });
+
+    const producer = MessageBrokerService.instance.producer;
+
+    await producer.publish({
+      queue: MessageBrokerQueues.sendMessageQueue,
+      message: sendMessageCommand
+    });
+
+    return { message };
   });
 
   server.listen({
     port: Number(process.env.PORT || 5001),
     host: '0.0.0.0'
-  }, (error, address) => {
+  }, (error) => {
     if (error) {
       console.error(error.message ?? 'Fail start server');
       process.exit(1);

@@ -11,10 +11,12 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
+      "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./*": {
       "import": "./dist/*/index.js",
+      "require": "./dist/*/index.js",
       "types": "./dist/*/index.d.ts"
     }
   },
@@ -22,7 +24,8 @@
   "author": "walissonprm@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "@wamage/messaging-contracts": "workspace:*"
+    "@wamage/messaging-contracts": "workspace:*",
+    "kafkajs": "^2.2.4"
   },
   "devDependencies": {
     "rimraf": "6.1.0",
